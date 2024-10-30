@@ -8,7 +8,7 @@ export default function CreatePage() {
     post.uid = auth.currentUser.uid;
 
     const response = await fetch(
-      "https://fb-rest-race-default-rtdb.firebaseio.com/posts.json",
+      "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/posts.json",
       {
         method: "POST",
         body: JSON.stringify(post)

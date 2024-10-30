@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase-config";
+import darkLogo from '../images/darklogo.svg';
 
 export default function SignInPage() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -26,31 +27,37 @@ export default function SignInPage() {
   }
   return (
     <section id="sign-in-page" className="page">
-      <h1>Sign In</h1>
+       <img src={darkLogo} alt="Logo" className="logo" />
+      <h1>Log In</h1>
       <form id="sign-in-form" onSubmit={handleSignIn}>
-        <label htmlFor="mail">Mail</label>
+      <div className="inputgroup">
+        <label htmlFor="mail">Email</label>
         <input
           id="mail"
           type="email"
           name="mail"
           aria-label="mail"
-          placeholder="Type your mail..."
+          placeholder="mymail@gmail.com"
           required
         />
+        </div>
+        <div className="inputgroup">
         <label htmlFor="password">Password</label>
         <input
           id="password"
           type="password"
           name="password"
           aria-label="password"
-          placeholder="Type your password..."
+          placeholder="password"
           autoComplete="current-password"
         />
+        <p>Forgot password?</p>
+        </div>
         <div className="error-message">
           <p>{errorMessage}</p>
         </div>
         <div className="btns">
-          <button>Sign In</button>
+          <button>Log in</button>
         </div>
       </form>
       <p className="text-center">

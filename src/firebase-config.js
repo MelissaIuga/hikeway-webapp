@@ -2,15 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // for authentication
 
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBOgT4lU4nUb7f8iHUY7fe7rsTRLF8f4oY",
-  authDomain: "fb-rest-race.firebaseapp.com",
-  databaseURL: "https://fb-rest-race-default-rtdb.firebaseio.com",
-  projectId: "fb-rest-race",
-  storageBucket: "fb-rest-race.appspot.com",
-  messagingSenderId: "950177214357",
-  appId: "1:950177214357:web:58ed1a1856a23f808f109c"
+  apiKey: "AIzaSyC-NHLk0M5D6u2LRArVoXvso6714glzW5I",
+  authDomain: "hikeway-webapp.firebaseapp.com",
+  projectId: "hikeway-webapp",
+  storageBucket: "hikeway-webapp.appspot.com",
+  messagingSenderId: "219787022265",
+  appId: "1:219787022265:web:62e5ee6954f9aae977f068"
 };
 
 // Initialize Firebase

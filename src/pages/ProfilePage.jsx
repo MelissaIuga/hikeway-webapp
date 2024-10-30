@@ -12,7 +12,7 @@ export default function ProfilePage() {
 
   const fileInputRef = useRef(null);
 
-  const url = `https://fb-rest-race-default-rtdb.firebaseio.com/users/${auth.currentUser?.uid}.json`; // replace YOUR-FIREBASE-URL with your Firebase URL
+  const url = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser?.uid}.json`; // replace YOUR-FIREBASE-URL with your Firebase URL
 
   useEffect(() => {
     async function getUser() {

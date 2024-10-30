@@ -6,7 +6,7 @@ import { auth } from "../firebase-config";
 export default function PostDetailPage() {
   const [post, setPost] = useState({});
   const params = useParams();
-  const url = `https://fb-rest-race-default-rtdb.firebaseio.com/posts/${params.id}.json`;
+  const url = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/posts/${params.id}.json`;
   const navigate = useNavigate();
 
   useEffect(() => {

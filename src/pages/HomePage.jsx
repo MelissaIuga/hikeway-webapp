@@ -8,7 +8,7 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchPosts() {
       const response = await fetch(
-        "https://fb-rest-race-default-rtdb.firebaseio.com/posts.json"
+        "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
       ); // fetch data from the url
       const data = await response.json(); // get the data from the response and parse it
       // from object to array
