@@ -12,7 +12,9 @@
   --green-charcoal: #011008;
   --river-bank: #F6FCF0;
   --pine-500: #053218;
+  --pine-400: #2A8447;
   --electric-energy-500: #C4E426;
+  
 
 }
 
@@ -37,20 +39,37 @@ html {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   height: 100%;
-  line-height: 1.5;
+  line-height: 0.5;
+}
+
+.challenge {
+  margin-bottom: 10%;
+}
+
+.challenge h1 {
+  margin-bottom: 0%;
 }
 
 /* ---------- Typography ---------- */
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
+  font-weight: 600;
 }
 
 h2,
 h3 {
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 1.5em;
   letter-spacing: 0.1px;
 }
+
+h4 {
+  font-weight: 400;
+  text-decoration: underline;
+  color: var(--pine-400);
+}
+
 
 /* ---------- Link Styling ---------- */
 a {
@@ -219,6 +238,16 @@ nav a {
   border-radius: 8px;
 }
 
+#topnav {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+}
+
+#topnav-inner {
+  display: flex;
+}
+
 /* nav a:hover {
   background-color: var(--light-green);
   color: var(--green);
@@ -293,13 +322,12 @@ nav a.active {
 
 /* ---------- Post Card Styling ---------- */
 .post-card {
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  padding: 1.5em;
-  background-color: var(--white);
+  padding-top: 16px;
   transition: 0.5s;
   animation: fadeIn 0.5s;
   cursor: pointer;
-  border-radius: 10px;
+  border-bottom: solid #DDE3D8 1px;
+  border-top: solid #DDE3D8 1px;
 }
 
 .post-card:hover {
@@ -308,9 +336,9 @@ nav a.active {
 
 .post-card img {
   width: 100%;
-  height: 200px;
+  height: 362px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .post-card h2 {

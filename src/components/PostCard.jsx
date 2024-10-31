@@ -15,6 +15,7 @@ export default function PostCard({ post }) {
       <UserAvatar uid={post.uid} />
       <img src={post.image} alt={post.caption} />
       <h3>{post.caption}</h3>
+      <h4>{post.location}</h4>
     </article>
   );
 }

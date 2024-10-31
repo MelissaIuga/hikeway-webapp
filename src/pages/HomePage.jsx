@@ -1,23 +1,48 @@
 import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth"; // Firebase Auth import
 import PostCard from "../components/PostCard";
+import Menu from '../images/menu.svg';
+import Bell from '../images/bell.svg';
 
 export default function HomePage() {
-  const [posts, setPosts] = useState([]); // set the initial state to an empty array
+  const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null); // State for Firebase user
+  const auth = getAuth();
 
-  // Fetch data from the API
+  // Listen for the authenticated user
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        // Fetch user data from Firebase
+        const userUrl = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${currentUser.uid}.json`;
+        const response = await fetch(userUrl);
+        const userData = await response.json();
+
+        setUser({
+          name: userData.name || currentUser.displayName || "User", // Use fetched name or fallback to displayName
+          email: currentUser.email,
+          uid: currentUser.uid,
+        });
+      } else {
+        setUser(null); // User is signed out
+      }
+    });
+
+    return () => unsubscribe(); // Clean up the listener on component unmount
+  }, [auth]);
+
+  // Fetch posts from the API
   useEffect(() => {
     async function fetchPosts() {
       const response = await fetch(
         "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
-      ); // fetch data from the url
-      const data = await response.json(); // get the data from the response and parse it
-      // from object to array
+      );
+      const data = await response.json();
       const postsArray = Object.keys(data).map(postId => ({
         id: postId,
         ...data[postId]
-      })); // map the data to an array of objects
-
-      setPosts(postsArray); // set the posts state with the postsArray
+      }));
+      setPosts(postsArray);
     }
 
     fetchPosts();
@@ -25,6 +50,23 @@ export default function HomePage() {
 
   return (
     <section className="page">
+      <div id="topnav">
+      <h1>Hey, {user ? user.name : "User"}!</h1>
+      <div id="topnav-inner"><img
+          src={Bell}
+          alt="Notifications"
+        />
+        <img
+          src={Menu}
+          alt="Menu"
+        />
+      </div>
+      </div>
+
+      <div className="challenge"><h1>Suggested Challenges</h1>
+      <p>Join a challenge, hike & earn rewards!</p>
+      </div>
+
       <div className="grid">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />

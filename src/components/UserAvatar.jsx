@@ -6,7 +6,7 @@ export default function UserAvatar({ uid }) {
   useEffect(() => {
     async function getUser() {
       const response = await fetch(
-        `https://fb-rest-race-default-rtdb.firebaseio.com/users/${uid}.json`
+        `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`
       );
       const data = await response.json();
       setUser(data); // set the user state with the data from firebase
