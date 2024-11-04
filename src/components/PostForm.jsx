@@ -4,93 +4,79 @@ import Loader from "./Loader";
 export default function PostForm({ savePost, post }) {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("");
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isCaptionError, setIsCaptionError] = useState(false);
   const [isImageError, setIsImageError] = useState(false);
+  const [isLocationError, setIsLocationError] = useState(false);
+  const [isDescriptionError, setIsDescriptionError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    if (post?.caption && post?.image) {
-      // if post, set the states with values from the post object.
-      // The post object is a prop, passed from UpdatePage
-      setCaption(post.caption);
-      setImage(post.image);
+    if (post) {
+      setCaption(post.caption || "");
+      setImage(post.image || "");
+      setLocation(post.location || "");
+      setDescription(post.description || "");
     }
-  }, [post]); // useEffect is called every time post changes.
+  }, [post]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (!caption && !image) {
-      setErrorMessage("Please fill out both caption and image.");
-      setIsCaptionError(true);
-      setIsImageError(true);
+    if (!caption || !image || !location || !description) {
+      setErrorMessage("Please fill out all fields.");
+      setIsCaptionError(!caption);
+      setIsImageError(!image);
+      setIsLocationError(!location);
+      setIsDescriptionError(!description);
       return;
     }
 
-    if (!caption) {
-      setErrorMessage("Please enter a caption.");
-      setIsCaptionError(true);
-      return;
-    }
-
-    if (!image) {
-      setErrorMessage("Please choose an image.");
-      setIsImageError(true);
-      return;
-    }
-
-    // if no errors, clear error message
     setErrorMessage("");
     setIsCaptionError(false);
     setIsImageError(false);
+    setIsLocationError(false);
+    setIsDescriptionError(false);
 
-    const formData = { caption, image };
-    // ... send formData to API or parent component
-    savePost(formData); // <-- pass formData to parent component
+    const formData = { caption, image, location, description };
+    savePost(formData);
   }
 
-  /**
-   * handleImageChange is called every time the user chooses an image in the file system.
-   * The event is fired by the input file field in the form
-   */
   async function handleImageChange(event) {
-    setIsLoading(true); // set isLoading state to true
-    const file = event.target.files[0]; // get the first file in the array
+    setIsLoading(true);
+    const file = event.target.files[0];
     if (file.size < 500000) {
-      // if file size is below 0.5MB
-      const imageUrl = await uploadImage(file); // call the uploadImage function
-      setImage(imageUrl); // set the image state with the image URL
-      setErrorMessage(""); // reset errorMessage state
-      setIsImageError(false); // reset isImageError state
+      const imageUrl = await uploadImage(file);
+      setImage(imageUrl);
+      setErrorMessage("");
+      setIsImageError(false);
     } else {
-      // if not below 0.5MB display an error message using the errorMessage state
       setErrorMessage("The image file is too big!");
-      setIsImageError(true); // set isImageError to true
+      setIsImageError(true);
     }
-    setTimeout(() => setIsLoading(false), 500); // set isLoading state to false after 500ms
+    setTimeout(() => setIsLoading(false), 500);
   }
 
   async function uploadImage(imageFile) {
-    const firebaseProjectId = "fb-rest-race"; // replace with your own firebase project id
+    const firebaseProjectId = "hikeway-webapp";
     const url = `https://firebasestorage.googleapis.com/v0/b/${firebaseProjectId}.appspot.com/o/${imageFile.name}`;
-    // POST request to upload image
     const response = await fetch(url, {
       method: "POST",
       body: imageFile,
-      headers: { "Content-Type": imageFile.type }
+      headers: { "Content-Type": imageFile.type },
     });
 
     if (!response.ok) {
-      setErrorMessage("Upload image failed"); // set errorMessage state with error message
-      setIsImageError(true); // set isImageError to true
-      throw new Error("Upload image failed"); // throw an error
+      setErrorMessage("Upload image failed");
+      setIsImageError(true);
+      throw new Error("Upload image failed");
     }
 
-    const imageUrl = `${url}?alt=media`; // get the image URL
-    return imageUrl; // return the image URL
+    return `${url}?alt=media`;
   }
 
   return (
@@ -102,11 +88,32 @@ export default function PostForm({ savePost, post }) {
           name="caption"
           type="text"
           value={caption}
-          aria-label="caption"
           placeholder="Write a caption..."
-          onChange={e => setCaption(e.target.value)}
+          onChange={(e) => setCaption(e.target.value)}
           className={isCaptionError ? "error" : ""}
         />
+
+        <label htmlFor="location">Location</label>
+        <input
+          id="location"
+          name="location"
+          type="text"
+          value={location}
+          placeholder="Enter location..."
+          onChange={(e) => setLocation(e.target.value)}
+          className={isLocationError ? "error" : ""}
+        />
+
+        <label htmlFor="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          value={description}
+          placeholder="Write a description..."
+          onChange={(e) => setDescription(e.target.value)}
+          className={isDescriptionError ? "error" : ""}
+        />
+
         <label htmlFor="image-url">Image</label>
         <input
           type="file"
@@ -124,7 +131,7 @@ export default function PostForm({ savePost, post }) {
               : "https://placehold.co/600x400?text=Click+here+to+select+an+image"
           }
           alt="Choose"
-          onError={e =>
+          onError={(e) =>
             (e.target.src =
               "https://placehold.co/600x400?text=Error+loading+image")
           }

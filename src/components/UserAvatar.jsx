@@ -21,7 +21,7 @@ export default function UserAvatar({ uid }) {
         alt={user?.name}
       />
       <span>
-        <h3>{user?.name}</h3>
+        <h2>{user?.name}</h2>
         <p>{user?.title}</p>
       </span>
     </div>

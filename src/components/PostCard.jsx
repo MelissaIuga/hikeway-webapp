@@ -16,6 +16,7 @@ export default function PostCard({ post }) {
       <img src={post.image} alt={post.caption} />
       <h3>{post.caption}</h3>
       <h4>{post.location}</h4>
+      <p>{post.description}</p>
     </article>
   );
 }

@@ -67,6 +67,10 @@ export default function HomePage() {
       <p>Join a challenge, hike & earn rewards!</p>
       </div>
 
+     <h1>
+      Posts from hikers in <span style={{ color: 'var(--pine-400)' }}>Silkeborg</span>
+    </h1>
+
       <div className="grid">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />
