@@ -6,8 +6,8 @@ import mapIcon from '../images/map-default.svg';
 import mapActiveIcon from '../images/map-active.svg';
 import communityIcon from '../images/community-default.svg';
 import communityActiveIcon from '../images/community-active.svg';
-import navigationIcon from '../images/navigation.svg'; // Import navigation.svg
-import profileNavIcon from '../images/profile-nav.svg'; // Import profile-nav.svg
+import navigationIcon from '../images/navigation.svg'; 
+import profileNavIcon from '../images/profile-nav.svg'; 
 
 export default function Nav() {
   const [isHomeActive, setIsHomeActive] = useState(false);
@@ -48,7 +48,6 @@ export default function Nav() {
     } else if (location.pathname === '/community') {
       setIsCommunityActive(true);
     }
-    // No need to manage states for /profile or /create
   }, [location]);
 
   return (
