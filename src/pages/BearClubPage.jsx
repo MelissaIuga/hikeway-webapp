@@ -58,7 +58,7 @@ export default function BearClubPage() {
             </div>
 
             <div className='groups'>
-                <h2>Nearby groups to join</h2>
+                <h2>Nearby Groups to Join</h2>
 
                 <div className="groupgrid">
                     {groups.map(group => (
