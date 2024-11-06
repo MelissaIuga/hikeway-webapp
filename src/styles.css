@@ -30,7 +30,7 @@ html {
 body,
 html {
   background-color: var(--river-bank);
-  color: var(--text-color-dark);
+  color: var(--green-charcoal);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   height: 100%;
@@ -237,7 +237,7 @@ nav a {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  color: var(--text-color-light);
+  color: var(--river-bank);
   text-align: center;
   padding: 20px 0px;
   text-decoration: none;
@@ -416,8 +416,26 @@ nav a {
 
 /* ---------- Group Card Styling ---------- */
 
+.group-card h2{
+  font-size: 20px;
+  text-align: center;
+}
+
+.group-card p{
+  text-align: center;
+}
+
+.group-card img {
+  height: 154px;
+}
+
 .group-card {
-  
+  margin-bottom: -40%;
+}
+
+.groupgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
 }
 
 /* ---------- Post Page Styling ---------- */

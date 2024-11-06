@@ -10,41 +10,41 @@ export default function BearClubPage() {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-          if (currentUser) {
-            // Fetch user data from Firebase
-            const userUrl = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${currentUser.uid}.json`;
-            const response = await fetch(userUrl);
-            const userData = await response.json();
-    
-            setUser({
-              name: userData.name || currentUser.displayName || "User", // Use fetched name or fallback to displayName
-              email: currentUser.email,
-              uid: currentUser.uid,
-            });
-          } else {
-            setUser(null); // User is signed out
-          }
-        });
-    
-        return () => unsubscribe(); // Clean up the listener on component unmount
-      }, [auth]);
+            if (currentUser) {
+                // Fetch user data from Firebase
+                const userUrl = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${currentUser.uid}.json`;
+                const response = await fetch(userUrl);
+                const userData = await response.json();
 
-      useEffect(() => {
+                setUser({
+                    name: userData.name || currentUser.displayName || "User", // Use fetched name or fallback to displayName
+                    email: currentUser.email,
+                    uid: currentUser.uid,
+                });
+            } else {
+                setUser(null); // User is signed out
+            }
+        });
+
+        return () => unsubscribe(); // Clean up the listener on component unmount
+    }, [auth]);
+
+    useEffect(() => {
         async function fetchGroups() {
-          const response = await fetch(
-            "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/groups.json"
-          );
-          const data = await response.json();
-          const groupsArray = Object.keys(data).map(groupId => ({
-            id: groupId,
-            ...data[groupId]
-          }));
-          setGroups(groupsArray);
+            const response = await fetch(
+                "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/groups.json"
+            );
+            const data = await response.json();
+            const groupsArray = Object.keys(data).map(groupId => ({
+                id: groupId,
+                ...data[groupId]
+            }));
+            setGroups(groupsArray);
         }
-    
+
         fetchGroups();
-      }, []);
-    
+    }, []);
+
 
     return (
         <section className='page'>
@@ -59,11 +59,13 @@ export default function BearClubPage() {
 
             <div className='groups'>
                 <h2>Nearby groups to join</h2>
-                <div className="grid">
-        {groups.map(group => (
-          <GroupCard key={group.id} group={group} />
-        ))}
-      </div>
+
+                <div className="groupgrid">
+                    {groups.map(group => (
+                        <GroupCard key={group.id} group={group} />
+                    ))}
+                </div>
+                
             </div>
         </section>
     );
