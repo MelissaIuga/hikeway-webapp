@@ -82,13 +82,13 @@ export default function PostForm({ savePost, post }) {
   return (
     <>
       <form className="form-grid" onSubmit={handleSubmit}>
-        <label htmlFor="caption">Caption</label>
+        <label htmlFor="caption">Give it a nice title</label>
         <input
           id="caption"
           name="caption"
           type="text"
           value={caption}
-          placeholder="Write a caption..."
+          placeholder="My hike to..."
           onChange={(e) => setCaption(e.target.value)}
           className={isCaptionError ? "error" : ""}
         />
@@ -99,22 +99,22 @@ export default function PostForm({ savePost, post }) {
           name="location"
           type="text"
           value={location}
-          placeholder="Enter location..."
+          placeholder="Where was this?"
           onChange={(e) => setLocation(e.target.value)}
           className={isLocationError ? "error" : ""}
         />
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">Tell us about your hike</label>
         <textarea
           id="description"
           name="description"
           value={description}
-          placeholder="Write a description..."
+          placeholder="Any tips to share or cool things you have seen along the way?"
           onChange={(e) => setDescription(e.target.value)}
           className={isDescriptionError ? "error" : ""}
         />
 
-        <label htmlFor="image-url">Image</label>
+        <label htmlFor="image-url">Took any photos?</label>
         <input
           type="file"
           className="hide"
