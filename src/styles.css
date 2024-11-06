@@ -425,11 +425,9 @@ nav a {
   text-align: center;
 }
 
-.group-card img {
-  height: 154px;
-}
-
 .group-card {
+  display: flex;
+  flex-direction: column;
   margin-bottom: -40%;
 }
 
