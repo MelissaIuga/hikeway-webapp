@@ -9,10 +9,10 @@ export default function UserAvatar({ uid }) {
         `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`
       );
       const data = await response.json();
-      setUser(data); // set the user state with the data from firebase
+      setUser(data); // sets the user state with the data from firebase
     }
     getUser(); // call the getUser function
-  }, [uid]); // <--- "[id]" VERY IMPORTANT!!!
+  }, [uid]); 
 
   return (
     <div className="avatar">

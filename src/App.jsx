@@ -7,6 +7,7 @@ import PostDetailPage from "./pages/PostDetailPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import UpdatePage from "./pages/UpdatePage";
+import BearClubPage from './pages/BearClubPage';
 import { auth } from "./firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import ProfilePage from "./pages/ProfilePage";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/posts/:id/update" element={<UpdatePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/community" element={<CommunityPage/>} />
+        <Route path="/bear-club" element={<BearClubPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

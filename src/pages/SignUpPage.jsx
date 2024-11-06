@@ -84,7 +84,7 @@ export default function SignUpPage() {
         <div className="error-message">
           <p>{errorMessage}</p>
         </div>
-        <div className="btns">
+        <div className="formbtn">
           <button>Sign Up</button>
         </div>
       </form>

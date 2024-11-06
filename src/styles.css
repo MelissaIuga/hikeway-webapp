@@ -1,9 +1,6 @@
 /* ---------- Root Variables ---------- */
 :root {
-  --light-grey: #f1f1f4;
   --text-color-danger: #f44250;
-  --text-color-dark: #011008;
-  --text-color-light: #F6FCF0;
   --white: #f1f1f1;
 
   --green-charcoal: #011008;
@@ -165,7 +162,7 @@ input {
 /* ---------- Form Specific Styling ---------- */
 
 
-form .btns {
+.formbtn {
   width: 100%;
 }
 
@@ -205,7 +202,6 @@ form p {
   text-decoration: underline;
   margin-bottom: -5%;
 }
-
 
 
 /* ---------- Button Group ---------- */
@@ -278,8 +274,6 @@ nav a {
 }
 
 /* ---------- Community Page Styling ---------- */
-
-
 .clubcontainer {
   display: flex;
   gap: 30%;
@@ -300,6 +294,26 @@ nav a {
   text-align: center;
 }
 
+#largeclublogo {
+  height: 140px;
+}
+
+.welcomebear {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 16%;
+}
+
+.bearclubtext {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.bearclubtext h1 {
+  margin-bottom: -16px;
+}
 
 /* ---------- Grid Container Styling ---------- */
 .grid {

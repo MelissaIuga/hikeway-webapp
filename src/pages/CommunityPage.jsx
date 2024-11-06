@@ -3,6 +3,8 @@ import Wolf from '../images/wolf.svg';
 import Bear from '../images/bear.svg';
 import Menu from '../images/menu.svg';
 import Bell from '../images/bell.svg';
+import { Link } from 'react-router-dom';
+
 
 export default function Clubs() {
     return (
@@ -46,15 +48,16 @@ export default function Clubs() {
                         </div>
                     </div>
 
-                    <div className="clubcontainer">
+
+                    <Link to="/bear-club" className="clubcontainer">
                         <img src={Bear} alt="Bear Club logo" />
                         <div className="clubtext">
                             <h1>Bear Club</h1>
                             <p>Advanced hikers</p>
                         </div>
-                    </div>
-                </div>
+                    </Link>
 
+                </div>
             </div>
         </section>
     );

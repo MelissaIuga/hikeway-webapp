@@ -56,7 +56,7 @@ export default function SignInPage() {
         <div className="error-message">
           <p>{errorMessage}</p>
         </div>
-        <div className="btns">
+        <div className="formbtn">
           <button>Log in</button>
         </div>
       </form>

@@ -150,10 +150,12 @@ export default function ProfilePage() {
           <div className="error-message">
             <p>{errorMessage}</p>
           </div>
-          <div className="btns">
+
+          <div className="formbtn">
             <button>Save User</button>
           </div>
         </form>
+
         <div className="btns">
           <button className="btn-cancel" onClick={handleSignOut}>
             Sign Out
