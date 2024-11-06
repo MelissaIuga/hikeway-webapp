@@ -414,6 +414,12 @@ nav a {
   border-radius: 50%;
 }
 
+/* ---------- Group Card Styling ---------- */
+
+.group-card {
+  
+}
+
 /* ---------- Post Page Styling ---------- */
 #post-page .post-card > img {
   height: auto;
