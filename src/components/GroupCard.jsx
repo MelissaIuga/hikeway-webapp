@@ -11,8 +11,10 @@ export default function GroupCard({ group }) {
     <section className="page">
     <article className="group-card">
       <img src={group.image} alt={group.title} />
+      <div className="text">
       <h2>{group.title}</h2>
       <p>{group.membersCount ? `${group.membersCount} Members` : "No members yet"}</p> {/* Display number of members */}
+      </div>
     </article>
     </section>
   );
