@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // for authentication
 
 
-// Your web app's Firebase configuration
+// the web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC-NHLk0M5D6u2LRArVoXvso6714glzW5I",
   authDomain: "hikeway-webapp.firebaseapp.com",
@@ -14,5 +14,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Initialize Firebase Authentication and get a reference to the service
+
+// Initialize Firebase Authentication
 export const auth = getAuth(app);

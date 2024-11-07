@@ -11,6 +11,7 @@ export default function GroupDetailPage() {
   const url = `https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/groups/${params.id}.json`;
   const postsUrl = "https://hikeway-webapp-default-rtdb.europe-west1.firebasedatabase.app/posts.json";
 
+  // fetch the group data and the group posts if any
   useEffect(() => {
     async function getGroup() {
       const response = await fetch(url);
@@ -38,11 +39,13 @@ export default function GroupDetailPage() {
     navigate(`/create?groupId=${params.id}`);
   }
 
+  // return group detail page with post creation button leading to CreatePage
   return (
     <section className="page" id="group-page">
       <div className="container">
         <h1>{group.name}</h1>
         <GroupCard group={group} />
+
 
         <button onClick={handleCreatePost} className="btn-create-post">
           Create Post

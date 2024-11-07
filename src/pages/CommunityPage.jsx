@@ -6,6 +6,7 @@ import Bell from '../images/bell.svg';
 import { Link } from 'react-router-dom';
 
 
+// no API handling on this page, therefore return styled elements
 export default function Clubs() {
     return (
         <section className="page">

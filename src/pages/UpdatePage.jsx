@@ -18,6 +18,7 @@ export default function UpdatePage() {
     getPost();
   }, [url]);
 
+  // function handling the post update 
   async function updatePost(postToUpdate) {
     const response = await fetch(url, {
       method: "PATCH",
@@ -31,6 +32,7 @@ export default function UpdatePage() {
     }
   }
 
+  // return updated post
   return (
     <section className="page" id="update-page">
       <div className="container">

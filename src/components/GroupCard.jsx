@@ -13,7 +13,7 @@ export default function GroupCard({ group }) {
       <img src={group.image} alt={group.title} />
       <div className="text">
       <h2>{group.title}</h2>
-      <p>{group.membersCount ? `${group.membersCount} Members` : "No members yet"}</p> {/* Display number of members */}
+      <p>{group.membersCount ? `${group.membersCount} Members` : "No members yet"}</p> {/* Displays number of members */}
       </div>
     </article>
     </section>

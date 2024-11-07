@@ -46,6 +46,7 @@ export default function PostForm({ savePost, post }) {
     savePost(formData);
   }
 
+  // image upload and handling
   async function handleImageChange(event) {
     setIsLoading(true);
     const file = event.target.files[0];
@@ -79,6 +80,7 @@ export default function PostForm({ savePost, post }) {
     return `${url}?alt=media`;
   }
 
+  // return the form users must fill in
   return (
     <>
       <form className="form-grid" onSubmit={handleSubmit}>

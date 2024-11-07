@@ -22,10 +22,9 @@ export default function SignUpPage() {
         createUser(user.uid, name, mail);
       })
       .catch(error => {
-        let code = error.code; // saving error code in variable
+        let code = error.code; 
         console.log(code);
-        code = code.replaceAll("-", " "); // some JS string magic to display error message. See the log above in the console
-        code = code.replaceAll("auth/", "");
+        code = code.replaceAll("-", " "); 
         setErrorMessage(code);
       });
   }
@@ -44,6 +43,7 @@ export default function SignUpPage() {
     }
   }
 
+  // return signup form with a link leading to signin if user has an account
   return (
     <section id="sign-up-page" className="page">
       <img src={darkLogo} alt="Logo" className="logo" />

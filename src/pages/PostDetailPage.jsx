@@ -20,10 +20,12 @@ export default function PostDetailPage() {
     getPost();
   }, [params.id, url]);
 
+  // update function
   function navigateToUpdate() {
     navigate(`/posts/${params.id}/update`);
   }
 
+  // delete function with a confirmation window
   async function handleDelete() {
     const shouldDelete = window.confirm(
       "Are you sure you want to delete this post?"
@@ -42,6 +44,7 @@ export default function PostDetailPage() {
     }
   }
 
+  // return PostCard with new CSS styling and if it is autheticated user's own post, allow to update or edit
   return (
     <section className="page" id="post-page">
       <div className="container">

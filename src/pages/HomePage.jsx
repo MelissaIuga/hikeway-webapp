@@ -28,7 +28,7 @@ export default function HomePage() {
       }
     });
 
-    return () => unsubscribe(); // Clean up the listener on component unmount
+    return () => unsubscribe(); 
   }, [auth]);
 
   // Fetch posts from the API
@@ -48,6 +48,7 @@ export default function HomePage() {
     fetchPosts();
   }, []);
 
+  // return styled elements and user posts
   return (
     <section className="page">
       <div id="topnav">

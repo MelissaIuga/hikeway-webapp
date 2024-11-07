@@ -37,9 +37,9 @@ export default function Nav() {
     setIsCommunityActive(true);
   };
 
-  // Reset state when the route changes
+  // Resets state when the route changes
   useEffect(() => {
-    resetActiveStates(); // Reset all active states on route change
+    resetActiveStates(); // Resets all active states on route change
 
     if (location.pathname === '/') {
       setIsHomeActive(true);
@@ -66,7 +66,7 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/navigation">
         <img 
-          src={navigationIcon} // Display static navigation.svg
+          src={navigationIcon} // Display static navigation.svg (does not change on click)
           alt="Navigation"
         />
       </NavLink>
@@ -78,11 +78,10 @@ export default function Nav() {
       </NavLink>
       <NavLink to="/profile">
         <img 
-          src={profileNavIcon} // Display static profile-nav.svg
+          src={profileNavIcon} // Display static profile-nav.svg (does not change on click)
           alt="Profile"
         />
       </NavLink>
-      {/* <NavLink to="/create">Create Post</NavLink> */}
     </nav>
   );
 }

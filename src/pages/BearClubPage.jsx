@@ -26,9 +26,10 @@ export default function BearClubPage() {
             }
         });
 
-        return () => unsubscribe(); // Clean up the listener on component unmount
+        return () => unsubscribe(); 
     }, [auth]);
 
+    // fetch the groups from the Firebase API
     useEffect(() => {
         async function fetchGroups() {
             const response = await fetch(
@@ -46,6 +47,7 @@ export default function BearClubPage() {
     }, []);
 
 
+    // returns the groups from the API and the other styled elements
     return (
         <section className='page'>
             <div className='welcomebear'>

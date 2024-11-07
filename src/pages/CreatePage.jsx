@@ -35,6 +35,7 @@ export default function CreatePage() {
     }
   }
 
+  // returns the PostForm component to be filled in by the user
   return (
     <section className="page">
       <div className="container">

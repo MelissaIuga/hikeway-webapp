@@ -11,7 +11,7 @@ export default function UserAvatar({ uid }) {
       const data = await response.json();
       setUser(data); // sets the user state with the data from firebase
     }
-    getUser(); // call the getUser function
+    getUser(); // calls the getUser function
   }, [uid]); 
 
   return (

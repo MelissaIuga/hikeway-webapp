@@ -49,10 +49,7 @@ export default function ProfilePage() {
     }
   }
 
-  /**
-   * handleImageChange is called every time the user chooses an image in the file system.
-   * The event is fired by the input file field in the form
-   */
+  
   async function handleImageChange(event) {
     const file = event.target.files[0]; // get the first file in the array
     if (file.size < 500000) {

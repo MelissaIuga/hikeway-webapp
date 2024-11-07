@@ -16,15 +16,17 @@ export default function SignInPage() {
       .then(userCredential => {
         // Signed in
         const user = userCredential.user;
-        console.log(user); // for test purposes: logging the authenticated user
+        console.log(user); // to test logging the authenticated user in
       })
       .catch(error => {
         let code = error.code; // saving error code in variable
-        code = code.replaceAll("-", " "); // some JS string magic to display error message. See the log above in the console
+        code = code.replaceAll("-", " "); 
         code = code.replaceAll("auth/", "");
         setErrorMessage(code);
       });
   }
+
+  // return signin form with a link leading to signup if user does not have an account
   return (
     <section id="sign-in-page" className="page">
        <img src={darkLogo} alt="Logo" className="logo" />
