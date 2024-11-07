@@ -64,9 +64,10 @@ export default function HomePage() {
       </div>
       </div>
 
-      <div className="challenge"><h1>Suggested Challenges</h1>
+      {/* <div className="challenge">
+      <h1>Suggested Challenges</h1>
       <p>Join a challenge, hike & earn rewards!</p>
-      </div>
+   </div> */}
 
      <h1>
       Posts from hikers in <span style={{ color: 'var(--pine-400)' }}>Silkeborg</span>
