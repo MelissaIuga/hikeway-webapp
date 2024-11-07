@@ -9,7 +9,7 @@ export default function GroupCard({ group }) {
   }
   return (
     <section className="page">
-    <article className="group-card">
+    <article className="group-card" onClick={handleClick}>
       <img src={group.image} alt={group.title} />
       <div className="text">
       <h2>{group.title}</h2>

@@ -12,6 +12,7 @@ import { auth } from "./firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import ProfilePage from "./pages/ProfilePage";
 import CommunityPage from "./pages/CommunityPage";
+import GroupDetailPage from "./pages/GroupDetailPage";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
@@ -40,6 +41,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/community" element={<CommunityPage/>} />
         <Route path="/bear-club" element={<BearClubPage />} />
+        <Route path="/groups/:id" element={<GroupDetailPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

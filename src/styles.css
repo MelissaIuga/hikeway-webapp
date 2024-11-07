@@ -436,6 +436,16 @@ nav a {
   grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
 }
 
+#group-page .container {
+  margin-top: -15%;
+}
+
+#group-page .container img {
+  margin-left: -16%;
+  margin-right: -12%;
+  height: 200px;
+}
+
 /* ---------- Post Page Styling ---------- */
 #post-page .post-card > img {
   height: auto;
