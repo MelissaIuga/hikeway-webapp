@@ -84,6 +84,7 @@ export default function PostForm({ savePost, post }) {
   return (
     <>
       <form className="form-grid" onSubmit={handleSubmit}>
+      <div className="inputgroup">
         <label htmlFor="caption">Give it a nice title</label>
         <input
           id="caption"
@@ -94,7 +95,9 @@ export default function PostForm({ savePost, post }) {
           onChange={(e) => setCaption(e.target.value)}
           className={isCaptionError ? "error" : ""}
         />
+        </div>
 
+        <div className="inputgroup">
         <label htmlFor="location">Location</label>
         <input
           id="location"
@@ -105,7 +108,9 @@ export default function PostForm({ savePost, post }) {
           onChange={(e) => setLocation(e.target.value)}
           className={isLocationError ? "error" : ""}
         />
+        </div>
 
+        <div className="inputgroup">
         <label htmlFor="description">Tell us about your hike</label>
         <textarea
           id="description"
@@ -115,7 +120,9 @@ export default function PostForm({ savePost, post }) {
           onChange={(e) => setDescription(e.target.value)}
           className={isDescriptionError ? "error" : ""}
         />
+        </div>
 
+        <div className="inputgroup">
         <label htmlFor="image-url">Took any photos?</label>
         <input
           type="file"
@@ -124,6 +131,7 @@ export default function PostForm({ savePost, post }) {
           onChange={handleImageChange}
           ref={fileInputRef}
         />
+    
         <img
           id="image"
           className={isImageError ? "error image-preview" : "image-preview"}
@@ -139,6 +147,7 @@ export default function PostForm({ savePost, post }) {
           }
           onClick={() => fileInputRef.current.click()}
         />
+         </div>
 
         <div className="error-message">
           <p>{errorMessage}</p>

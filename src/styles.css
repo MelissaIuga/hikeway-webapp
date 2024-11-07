@@ -83,11 +83,6 @@ p {
 a {
   color: var(--pine-400);
   text-decoration: none;
-  transition: 0.5s;
-}
-
-a:hover {
-  color: var(--dark-green);
 }
 
 /* ---------- Form, Input, and Button Styling ---------- */
@@ -150,7 +145,7 @@ input {
   border: 2px solid var(--text-color-danger);
 }
 
-/* ---------- Logo & Image Specific Styling ---------- */
+/* ---------- Logo Styling ---------- */
 
 .logo {
   margin-top: 55%;
