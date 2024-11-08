@@ -84,7 +84,7 @@ export default function PostForm({ savePost, post }) {
   return (
     <>
       <form className="form-grid" onSubmit={handleSubmit}>
-      <div className="inputgroup">
+      <div className="inputgroup" id="create-group">
         <label htmlFor="caption">Give it a nice title</label>
         <input
           id="caption"
