@@ -159,7 +159,7 @@ export default function ProfilePage() {
           </button>
         </div>
       </div>
-      <h2>Posts</h2>
+      <h2>Hiking Journal</h2>
       <UserPosts uid={auth.currentUser?.uid} />
     </section>
   );
