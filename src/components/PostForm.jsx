@@ -46,108 +46,90 @@ export default function PostForm({ savePost, post }) {
     savePost(formData);
   }
 
-  // image upload and handling
-  async function handleImageChange(event) {
-    setIsLoading(true);
+  function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 500000) {
-      const imageUrl = await uploadImage(file);
-      setImage(imageUrl);
-      setErrorMessage("");
-      setIsImageError(false);
+      // FileReader for local preview
+      const reader = new FileReader();
+      reader.onload = event => {
+        setImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+      setErrorMessage(""); // reset errorMessage state
+      setIsImageError(false); // reset isImageError state
     } else {
       setErrorMessage("The image file is too big!");
       setIsImageError(true);
     }
-    setTimeout(() => setIsLoading(false), 500);
   }
 
-  async function uploadImage(imageFile) {
-    const firebaseProjectId = "hikeway-webapp";
-    const url = `https://firebasestorage.googleapis.com/v0/b/${firebaseProjectId}.appspot.com/o/${imageFile.name}`;
-    const response = await fetch(url, {
-      method: "POST",
-      body: imageFile,
-      headers: { "Content-Type": imageFile.type },
-    });
-
-    if (!response.ok) {
-      setErrorMessage("Upload image failed");
-      setIsImageError(true);
-      throw new Error("Upload image failed");
-    }
-
-    return `${url}?alt=media`;
-  }
-
-  // return the form users must fill in
   return (
     <>
       <form className="form-grid" onSubmit={handleSubmit}>
-      <div className="inputgroup" id="create-group">
-        <label htmlFor="caption">Give it a nice title</label>
-        <input
-          id="caption"
-          name="caption"
-          type="text"
-          value={caption}
-          placeholder="My hike to..."
-          onChange={(e) => setCaption(e.target.value)}
-          className={isCaptionError ? "error" : ""}
-        />
+        <div className="inputgroup" id="create-group">
+          <label htmlFor="caption">Give it a nice title</label>
+          <input
+            id="caption"
+            name="caption"
+            type="text"
+            value={caption}
+            placeholder="My hike to..."
+            onChange={(e) => setCaption(e.target.value)}
+            className={isCaptionError ? "error" : ""}
+          />
         </div>
 
         <div className="inputgroup">
-        <label htmlFor="location">Location</label>
-        <input
-          id="location"
-          name="location"
-          type="text"
-          value={location}
-          placeholder="Where was this?"
-          onChange={(e) => setLocation(e.target.value)}
-          className={isLocationError ? "error" : ""}
-        />
+          <label htmlFor="location">Location</label>
+          <input
+            id="location"
+            name="location"
+            type="text"
+            value={location}
+            placeholder="Where was this?"
+            onChange={(e) => setLocation(e.target.value)}
+            className={isLocationError ? "error" : ""}
+          />
         </div>
 
         <div className="inputgroup">
-        <label htmlFor="description">Tell us about your hike</label>
-        <textarea
-          id="description"
-          name="description"
-          value={description}
-          placeholder="Any tips to share or cool things you have seen along the way?"
-          onChange={(e) => setDescription(e.target.value)}
-          className={isDescriptionError ? "error" : ""}
-        />
+          <label htmlFor="description">Tell us about your hike</label>
+          <textarea
+            id="description"
+            name="description"
+            value={description}
+            placeholder="Any tips to share or cool things you have seen along the way?"
+            onChange={(e) => setDescription(e.target.value)}
+            className={isDescriptionError ? "error" : ""}
+          />
         </div>
 
         <div className="inputgroup">
-        <label htmlFor="image-url">Took any photos?</label>
-        <input
-          type="file"
-          className="hide"
-          accept="image/*"
-          onChange={handleImageChange}
-          ref={fileInputRef}
-        />
+          <label htmlFor="image-url">Took any photos?</label>
+          <input
+            type="file"
+            className="hide"
+            accept="image/*"
+            onChange={handleImageChange}
+            ref={fileInputRef}
+          />
     
-        <img
-          id="image"
-          className={isImageError ? "error image-preview" : "image-preview"}
-          src={
-            image
-              ? image
-              : "https://placehold.co/600x400?text=Click+here+to+select+an+image"
-          }
-          alt="Choose"
-          onError={(e) =>
-            (e.target.src =
-              "https://placehold.co/600x400?text=Error+loading+image")
-          }
-          onClick={() => fileInputRef.current.click()}
-        />
-         </div>
+          <img
+            id="image"
+            className={isImageError ? "error image-preview" : "image-preview"}
+            src={
+              image
+                ? image
+                : "https://placehold.co/600x400?text=Click+here+to+select+an+image"
+            }
+            alt="Choose"
+            onError={(e) =>
+              (e.target.src =
+                "https://placehold.co/600x400?text=Error+loading+image")
+            }
+            onClick={() => fileInputRef.current.click()}
+          />
+        </div>
 
         <div className="error-message">
           <p>{errorMessage}</p>
